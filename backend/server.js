@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express')
 const mongoose =  require("mongoose")
 const cors = require('cors');
@@ -27,9 +28,9 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb+srv://dev:dev123@cluster0.es90y1z.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0').then(()=>{
-    console.log("successfully");
-}).catch((err)=>console.log(err))
+mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log("MongoDB connected successfully"))
+    .catch((err)=>console.log(err))
 
 // Server Listening
 const PORT = process.env.PORT || 4000;
